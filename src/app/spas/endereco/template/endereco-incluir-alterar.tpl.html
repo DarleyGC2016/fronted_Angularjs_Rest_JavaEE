@@ -1,0 +1,100 @@
+<style>
+  .btn-space {
+    margin-right: 10px;
+  }
+
+  myModal {
+    z-index: 2147483647;
+  }
+
+  .disabledDiv {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+</style>
+
+<div ng-init="vm.init()">
+  <div
+    class="container"
+    style="overflow-y: auto; overflow-x: hidden; height: 330px;">
+    <form>
+      <div class="mx-auto" style="width: 300px;padding-left:60px;">
+        <h5 class="modal-title">{{vm.tituloTelaEndereco}}</h5>
+      </div>
+        <div class="row" style="padding-top:30px">
+          <div class="form-group" style="margin-left:15px">
+              <label for="logradouroEndereco">Logradouro: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="logradouroEndereco"
+                ng-model="vm.enderecoModal.logradouro"
+                placeholder="Logradouro"
+                style="width:250px"
+              />
+          </div>
+          <div class="form-group" style="margin-left:15px">
+              <label for="complementoEndereco">Complemento: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="complementoEndereco"
+                ng-model="vm.enderecoModal.complemento"
+                placeholder="Complemento"
+                style="width:150px"
+                 />
+          </div>
+      </div>
+      <div class="row">
+        <div class="form-group" style="margin-left:15px">
+          <label for="localidadeEndereco">Cidade: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="localidadeEndereco"
+            ng-model="vm.enderecoModal.localidade"
+            placeholder="Cidade"
+            style="width:250px"
+          />
+        </div>
+        <div class="form-group" style="margin-left:15px">
+          <label for="ufEndereco">UF: </label> 
+            <div>        
+              <select
+                style="width:60px; height: 38px;"
+                ng-class="{'disabledDiv': vm.listaUF.length === 0,'custom-select custom-select-sm': true}"
+                ng-options="uf.desc for uf in vm.listaUF"
+                ng-model="vm.uf"
+              >
+                <option value="">UF</option>
+              </select>
+            </div> 
+        </div>
+      </div>
+      <div class="row">
+         <div class="form-group" style="margin-left:15px">
+            <label for="bairroEndereco">Bairro: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="bairroEndereco"
+              placeholder="Bairro"
+               style="width:250px"
+              ng-model="vm.enderecoModal.bairro"
+            />
+          </div>
+          <div class="form-group" style="margin-left:15px">
+            <label for="cepEndereco">CEP: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="cepEndereco"
+              style="width:150px"
+              ui-mask="99.999-999"
+              ng-model="vm.enderecoModal.cep"
+            />
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
